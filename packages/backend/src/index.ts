@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import wtfnode from "wtfnode";
 import getConfig, { loadConfig } from "./config";
 import logger from "./logger";
-import prisma from "./prisma";
 
 dotenv.config();
 
@@ -53,9 +52,6 @@ void (async function () {
       }
 
       await pubSub.stop();
-
-      prisma.$disconnect();
-      logger.info("Prisma disconnected");
 
       wtfnode.dump();
     };
