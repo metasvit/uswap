@@ -25,7 +25,7 @@ contract USwapLP is Multicall, ReentrancyGuard {
         IERC20(fromToken).transferFrom(sender, address(this), fromAmount);
 
         // borrow toToken from LendingPool
-        lendingPool.borrow(toToken, toAmount, 1, 1, msg.sender);
+        lendingPool.borrow(toToken, toAmount, 1, 1, address(this));
 
         // transfer toToken to sender
         IERC20(toToken).transferFrom(address(this), sender, toAmount);

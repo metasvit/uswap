@@ -1,10 +1,9 @@
-import { NetworkEnum } from "@1inch/fusion-sdk";
 import { DeepPartial, Immutable } from "src/types";
 
 export type AppEnv = "dev" | "test" | "prod";
 
 export enum Network {
-  MAINNET = NetworkEnum.ETHEREUM,
+  MAINNET = 1,
 }
 
 export type NetworkConfig = {
