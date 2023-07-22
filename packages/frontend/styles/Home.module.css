@@ -63,6 +63,73 @@
   flex-wrap: wrap;
   max-width: 800px;
 }
+.dialog {
+    position: relative;
+  width: 300px;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 12px;
+}
+.head_section {
+  display: flex;
+}
+.head_section h1 {
+  margin: 0;
+  font-size: 16px;
+}
+.from_section {
+  margin-top: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f0f7f7;
+}
+.from_section input {
+  border: none;
+  width: 160px;
+  padding-bottom: 20px;
+  background-color: transparent;
+  font-size: 20px;
+}
+.turn_over_section {
+position: absolute;
+width: 20px;
+height: 20px;
+right: calc(50% - 15px);
+top: calc(50% - 20px);
+}
+.turn_over_section button {
+  width: 30px;
+  height: 30px;
+  border: 4px solid white;
+  border-radius: 8px;
+  background-color: #f0f7f7;
+  /* border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #000; */
+}
+.to_section {
+  margin-top: 5px;
+  padding: 16px 8px 8px 8px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f0f7f7;
+}
+.to_section input {
+  border: none;
+  width: 160px;
+  padding-bottom: 20px;
+  background-color: transparent;
+  font-size: 20px;
+}
+.details_section {
+
+}
+.button_section {
+display: flex;
+justify-content: center;
+margin-top: 8px;
+}
 
 .card {
   margin: 1rem;
