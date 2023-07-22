@@ -26,15 +26,10 @@ export const QuotesController = {
       return;
     }
 
-    const binance = await Binance.default.getQuote(
-      fromToken.rateSymbol,
-      toToken.rateSymbol
-    );
-    const oneInch = await OneInch.default.getQuote(
-      fromToken.address,
-      toToken.address,
-      _amount.toString()
-    );
+    const [binance, oneInch] = await Promise.all([
+      Binance.default.getQuote(fromToken, toToken, _amount),
+      OneInch.default.getQuote(fromToken.address, toToken.address, _amount),
+    ]);
     res.json([binance, oneInch]);
   },
 };

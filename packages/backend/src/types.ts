@@ -24,10 +24,18 @@ export type Serializable = {
   [k: string]: SerializableBase | Serializable | SerializableArray;
 };
 
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UnwrapFunction<T> = T extends () => any ? ReturnType<T> : T;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type PossibleFunction<T> = T extends () => any
   ? T | UnwrapFunction<T>
   : T | (() => T);
+
+export type Token = {
+  name: string;
+  symbol: string;
+  decimals: number;
+  rateSymbol: string;
+  address: string;
+  chainId: number;
+};

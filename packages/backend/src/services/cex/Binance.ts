@@ -1,18 +1,56 @@
 import axios from "axios";
+import { Big } from "bigdecimal.js";
+import { Token } from "src/types";
 const crypto = require("crypto");
 
+const TARGET_DIGITS = 18;
+
+const convertDigits = (_price: string, digits: number = 0) => {
+  let price = Big(0);
+  if (digits >= TARGET_DIGITS) {
+    // Scale the returned price value down to Liquity's target precision
+    price = Big(_price).divide(10 ** (digits - TARGET_DIGITS));
+  } else if (digits < TARGET_DIGITS) {
+    // Scale the returned price value up to Liquity's target precision
+    price = Big(_price).multiply(10 ** (TARGET_DIGITS - digits));
+  }
+  return price;
+};
+
 export const Binance = {
-  getQuote: async (fromAsset: string, toAsset: string) => {
-    const [price, exchange, fee] = await Promise.all([
-      Binance.getPrice(fromAsset, toAsset),
-      Binance.getExchangeInfo(fromAsset, toAsset),
-      await Binance.getTradeFee(fromAsset, toAsset),
-    ]);
-    return {
-      price,
-      exchange,
-      fee,
+  getQuote: async (fromToken: Token, toToken: Token, amount: BigInt) => {
+    const result = {
+      name: "Binance",
+      data: {},
+      status: "SUCCESS",
     };
+
+    try {
+      const [price, exchange, fee] = await Promise.all([
+        Binance.getPrice(fromToken.rateSymbol, toToken.rateSymbol),
+        Binance.getExchangeInfo(fromToken.rateSymbol, toToken.rateSymbol),
+        Binance.getTradeFee(fromToken.rateSymbol, toToken.rateSymbol),
+      ]);
+
+      const _amount = convertDigits(price.price)
+        .multiply(amount.toString())
+        .divide(Big(10 ** fromToken.decimals));
+
+      result.data = {
+        toAmount: _amount
+          .divide(Big(10 ** (TARGET_DIGITS - toToken.decimals)))
+          .toBigInt()
+          .toString(),
+        price,
+        exchange,
+        fee,
+      };
+      return result;
+    } catch (e) {
+      console.log(e);
+      result.status = "FAILED";
+      return result;
+    }
   },
 
   getPrice: async (fromAsset: string, toAsset: string) => {

@@ -1705,6 +1705,11 @@ bech32@1.1.4:
   resolved "https://registry.yarnpkg.com/bech32/-/bech32-1.1.4.tgz#e38c9f37bf179b8eb16ae3a772b40c356d4832e9"
   integrity sha512-s0IrSOzLlbvX7yp4WBfPITzpAU8sqQcpsmwXDiKwrG4r491vwCO/XpejasRNl0piBMe/DvP4Tz0mIS/X1DPJBQ==
 
+bigdecimal.js@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/bigdecimal.js/-/bigdecimal.js-1.3.0.tgz#b1ca36a87fade1e7a53dad04520af82090e88e08"
+  integrity sha512-qGFPzhAjwv3iHqvScd/IclolF9GJGkH0Yf/HKcMCXmP3qK0qBAKbrxLFVRZC3KjE0h6ENUHB5IatYV+IV+FP5w==
+
 bigint-crypto-utils@^3.0.23:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/bigint-crypto-utils/-/bigint-crypto-utils-3.3.0.tgz#72ad00ae91062cf07f2b1def9594006c279c1d77"
