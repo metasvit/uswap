@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import wtfnode from "wtfnode";
-import getConfig, { loadConfig } from "./config";
+import { loadConfig } from "./config";
 import logger from "./logger";
 
 dotenv.config();
@@ -16,42 +16,11 @@ void (async function () {
     logger.info("Starting server...");
     await server.start();
 
-    // Connect to Redis
-    const redis = (await import("./redis")).default;
-    logger.info("Connecting to Redis...");
-    await redis.connect();
-
-    // Launch Bull queues
-    const bull = (await import("./bull")).default;
-    if (getConfig().BULL.ENABLE) {
-      await bull.launch();
-    }
-
-    // Start PubSub
-    const PubSub = (await import("./pubsub")).default;
-    const pubSub = new PubSub();
-    await pubSub.start();
-
     // Graceful shutdown
     const shutdownHandler = async () => {
       logger.info("Shutting down server...");
       await server.shutdown();
       logger.info("Server was successfully shutdown");
-
-      logger.info("Redis disconnecting...");
-      try {
-        await redis.quit();
-      } catch (e) {
-        logger.warn("Redis error: " + e.message);
-      }
-      logger.info("Redis disconnected");
-
-      // Stop Bull queues
-      if (getConfig().BULL.ENABLE) {
-        await bull.stop();
-      }
-
-      await pubSub.stop();
 
       wtfnode.dump();
     };

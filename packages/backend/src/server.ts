@@ -3,7 +3,6 @@ import http from "http";
 import httpShutdown from "http-shutdown";
 import logger from "./logger";
 import getConfig from "./config";
-import ArenaRouter from "./routes/ArenaRouter";
 import QuotesRouter from "./routes/quote";
 import TokensRouter from "./routes/token";
 import IdentitiesRouter from "./routes/id";
@@ -13,7 +12,6 @@ const server = httpShutdown(new http.Server(app));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(ArenaRouter);
 app.use("/api/v1", QuotesRouter);
 app.use("/api/v1", TokensRouter);
 app.use("/api/v1", IdentitiesRouter);
