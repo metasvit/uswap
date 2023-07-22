@@ -16,32 +16,32 @@ const config: HardhatUserConfig = {
     chiado: {
       url: `https://rpc.chiadochain.net`,
       chainId: 10200,
-      accounts: process.env.USWAP_PRIVATE_KEY
-        ? [process.env.USWAP_PRIVATE_KEY]
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
         : undefined,
       loggingEnabled: true,
     },
     lineaTestnet: {
       url: `https://rpc.goerli.linea.build`,
       chainId: 59140,
-      accounts: process.env.USWAP_PRIVATE_KEY
-        ? [process.env.USWAP_PRIVATE_KEY]
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
         : undefined,
       loggingEnabled: true,
     },
     mumbai: {
       url: `https://rpc.ankr.com/polygon_mumbai`,
       chainId: 80001,
-      accounts: process.env.USWAP_PRIVATE_KEY
-        ? [process.env.USWAP_PRIVATE_KEY]
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
         : undefined,
       loggingEnabled: true,
     },
     mantleTestnet: {
       url: `https://rpc.testnet.mantle.xyz`,
       chainId: 5001,
-      accounts: process.env.USWAP_PRIVATE_KEY
-        ? [process.env.USWAP_PRIVATE_KEY]
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
         : undefined,
       loggingEnabled: true,
     },
