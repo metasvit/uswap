@@ -1,16 +1,21 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
-import '@typechain/hardhat';
-import '@nomiclabs/hardhat-ethers';
-import '@nomiclabs/hardhat-solhint';
-import 'hardhat-tracer';
+import "@typechain/hardhat";
+import "@nomiclabs/hardhat-ethers";
+import "@nomiclabs/hardhat-solhint";
+import "hardhat-tracer";
+import "hardhat-deploy";
+import "hardhat-deploy-ethers";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.19",
   typechain: {
     outDir: "types",
     target: "ethers-v5",
+  },
+  paths: {
+    sources: "src",
   },
   networks: {
     chiado: {

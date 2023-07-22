@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import http from "http";
 import httpShutdown from "http-shutdown";
 import logger from "./logger";
@@ -10,6 +11,7 @@ import IdentitiesRouter from "./routes/id";
 const app = express();
 const server = httpShutdown(new http.Server(app));
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/v1", QuotesRouter);
