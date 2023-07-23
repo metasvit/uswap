@@ -76,15 +76,15 @@ const Home: NextPage = () => {
       }
     }
   };
-  const getQuotes = async (amount: number) => {
+  const getQuotes = async (amount: number | undefined) => {
     if (fromToken && toToken && amount) {
-      const quotes = await fetchQuotes(fromToken, toToken, amount)
+      const quotes = await fetchQuotes(fromToken, toToken, amount);
       if (quotes) {
-        console.log('quotes', quotes)
+        console.log("quotes", quotes);
       }
     }
   };
-  
+
   useEffect(() => {
     if (!tokensList.length) {
       getTokens();
@@ -140,8 +140,10 @@ const Home: NextPage = () => {
               onChange={(e: any) => {
                 if (!isNaN(e.target.value.trim())) {
                   setValueFrom(e.target.value.trim());
-                  getQuotes(e.target.value.trim());
                 }
+              }}
+              onBlur={() => {
+                getQuotes(valueFrom || undefined);
               }}
             ></input>
             <div style={{ flexGrow: 1 }}></div>
@@ -175,8 +177,10 @@ const Home: NextPage = () => {
               onChange={(e: any) => {
                 if (!isNaN(e.target.value.trim())) {
                   setValueTo(e.target.value.trim());
-                  getQuotes(e.target.value.trim());
                 }
+              }}
+              onBlur={() => {
+                getQuotes(valueTo || undefined);
               }}
             ></input>
             <div style={{ flexGrow: 1 }}></div>
@@ -205,8 +209,8 @@ const Home: NextPage = () => {
               <ConnectButton />
             ) : (
               <div>
-                  <button
-                    className={styles.button_section__button}
+                <button
+                  className={styles.button_section__button}
                   onClick={() => {
                     console.log("swap", fromToken, toToken, valueFrom, valueTo);
                   }}
