@@ -53,6 +53,7 @@ const Home: NextPage = () => {
   const [valueFrom, setValueFrom] = useState<number | null>(null);
   const [valueTo, setValueTo] = useState<number | null>(null);
   const [isIdentified, setIsIdentified] = useState(false);
+  const [quotes, setQuotes] = useState([]);
 
   const getTokens = async () => {
     const tokens = await fetchTokens();
@@ -74,7 +75,15 @@ const Home: NextPage = () => {
       }
     }
   };
-
+  const getQuotes = async (amount: number) => {
+    if (fromToken && toToken && amount) {
+      const quotes = await fetchQuotes(fromToken, toToken, amount)
+      if (quotes) {
+        console.log('quotes', quotes)
+      }
+    }
+  };
+  
   useEffect(() => {
     if (!tokensList.length) {
       getTokens();
@@ -117,6 +126,7 @@ const Home: NextPage = () => {
               onChange={(e: any) => {
                 if (!isNaN(e.target.value.trim())) {
                   setValueFrom(e.target.value.trim());
+                  getQuotes(e.target.value.trim());
                 }
               }}
             ></input>
@@ -151,6 +161,7 @@ const Home: NextPage = () => {
               onChange={(e: any) => {
                 if (!isNaN(e.target.value.trim())) {
                   setValueTo(e.target.value.trim());
+                  getQuotes(e.target.value.trim());
                 }
               }}
             ></input>
@@ -180,7 +191,8 @@ const Home: NextPage = () => {
               <ConnectButton />
             ) : (
               <div>
-                <button
+                  <button
+                    className={styles.button_section__button}
                   onClick={() => {
                     console.log("swap", fromToken, toToken, valueFrom, valueTo);
                   }}
