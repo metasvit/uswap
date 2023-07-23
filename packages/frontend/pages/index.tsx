@@ -118,6 +118,9 @@ const Home: NextPage = () => {
           <div className={styles.head_section}>
             <h1>Swap</h1>
           </div>
+          <div className={styles.providers_section}>
+
+          </div>
           <div className={styles.from_section}>
             {/* <h2>You pay</h2> */}
             <input
