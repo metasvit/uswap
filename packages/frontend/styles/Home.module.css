@@ -1,14 +1,27 @@
 .container {
   padding: 0 2rem;
+  background-color: rgba(1,1,1, 0.9);
+  color: white;
+}
+.container:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background-image: linear-gradient(rgba(13, 110, 253, 0.6), rgba(17, 96, 214, 0.6), rgba(29, 52, 87, 0.4)), url("../assets/bg-tile.png");
+  background-repeat: repeat;
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 12rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -65,9 +78,9 @@
 }
 .dialog {
   position: relative;
-  width: 300px;
+  width: 414px;;
   padding: 8px;
-  border: 1px solid grey;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   background-color: #222222;
   color: white;
@@ -85,7 +98,7 @@
   padding: 8px;
   border: none;
   border-radius: 12px;
-  background-color:rgba(256, 256, 256, 0.2);
+  background-color: rgba(256, 256, 256, 0.2);
 }
 .from_section input {
   border: none;
@@ -126,7 +139,7 @@
   padding: 16px 8px 8px 8px;
   border: none;
   border-radius: 12px;
-  background-color:rgba(256, 256, 256, 0.2);
+  background-color: rgba(256, 256, 256, 0.2);
 }
 .to_section input {
   border: none;
