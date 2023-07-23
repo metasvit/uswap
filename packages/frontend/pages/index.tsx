@@ -16,24 +16,73 @@ interface Token {
   chainId: number;
 }
 
+interface Identity {
+  name: string;
+  data: {};
+}
+
+interface Provider {
+  name: string;
+  symbol: string;
+  source: string;
+  timestamp: number;
+  status: string;
+  contract: string;
+  result: boolean;
+  chainId: number;
+  sync: {
+    enabled: boolean;
+    sourceId: string;
+    byChainIds: {
+      chainId: number;
+      timestamp: number;
+      syncTimestamp: number;
+      expirationTimestamp: number;
+      required: boolean;
+    }[];
+  };
+}
+
 const Home: NextPage = () => {
-  const { isConnected } = getAccount();
+  const { address, isConnected } = getAccount();
 
   const [isConnect, setIsConnect] = useState(false);
   const [tokensList, setTokensList] = useState<Token[]>([]);
   const [valueFrom, setValueFrom] = useState<number | null>(null);
   const [valueTo, setValueTo] = useState<number | null>(null);
+  const [isIdentified, setIsIdentified] = useState(false);
+
+  const getTokens = async () => {
+    const tokens = await fetchTokens()
+    if (tokens) {
+      setTokensList(tokens)
+    }
+  }
+  const getIdentified = async () => {
+    const result = await fetchIdentities(address)
+    if (result) {
+      if (result[0].data?.providers?.find((provider: Provider) => provider.symbol === "BABT")?.result) {
+        setIsIdentified(true)
+      }
+    }
+  }
 
   useEffect(() => {
-    setIsConnect(isConnected)
-  }, [isConnected]);
-  useEffect(() => {
     if (!tokensList.length) {
-      const tokens = fetchTokens()
-      console.log('tokens', tokens)
-      // if (tokens)
+      getTokens()
     }
   }, []);
+  useEffect(() => {
+    setIsConnect(isConnected)
+    if (isConnected && address) {
+      getIdentified()
+    }
+  }, [isConnected]);
+
+  const selectElement = document.getElementById('token_from');
+  const selectedIndex = selectElement ? selectElement.selectedIndex : 0;
+  const selectedValue = selectElement.options[selectedIndex].value;
+  console.log(selectedValue);
 
   return (
     <div className={styles.container}>
@@ -64,13 +113,14 @@ const Home: NextPage = () => {
               onChange={(e: any) => {
                 if (!isNaN(e.target.value.trim())) {
                   setValueFrom(e.target.value.trim())
+
                 }
               }}
             >
             </input>
-            <select name="token_from">
-              {tokensList.length && tokensList.map(item => (
-                <option key={item.symbol} value={item.symbol || " "}>item.symbol</option>
+            <select name="token_from" id="token_from">
+              {tokensList?.length && tokensList.map(item => (
+                <option key={item.symbol} value={item.symbol || " "}>{item.symbol}</option>
               ))}
             </select>
           </div>
