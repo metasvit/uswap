@@ -14,6 +14,9 @@ const config: HardhatUserConfig = {
     outDir: "types",
     target: "ethers-v5",
   },
+  namedAccounts: {
+    deployer: 0,
+  },
   paths: {
     sources: "src",
   },

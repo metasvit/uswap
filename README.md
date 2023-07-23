@@ -10,12 +10,12 @@
 
 ### Deployed Contracts
 
-| Network | Address                                         |
-| ------- | ----------------------------------------------- |
-| Kovan   | [0x0](https://kovan.etherscan.io/address/0x0)   |
-| Ropsten | [0x0](https://ropsten.etherscan.io/address/0x0) |
-| Rinkeby | [0x0](https://rinkeby.etherscan.io/address/0x0) |
-| Goerli  | [0x0](https://goerli.etherscan.io/address/0x0)  |
+| Network       | Address                                                                                                                             |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Mumbai        | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://mumbai.polygonscan.com/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091)     |
+| MantleTestnet | [0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091](https://explorer.mantle.xyz/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091)        |
+| LineaTestnet  | [0x0](https://rinkeby.etherscan.io/address/0x0)                                                                                     |
+| Chiado        | [0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091](https://blockscout.chiadochain.net/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091) |
 
 ## /backend
 
