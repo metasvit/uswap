@@ -29,9 +29,25 @@ const config: HardhatUserConfig = {
         : undefined,
       loggingEnabled: true,
     },
+    linea: {
+      url: `https://linea-mainnet.infura.io/v3/${process.env.POLYGON_INFURA_KEY}`,
+      chainId: 59144,
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
+        : undefined,
+      loggingEnabled: true,
+    },
     lineaTestnet: {
       url: `https://rpc.goerli.linea.build`,
       chainId: 59140,
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
+        : undefined,
+      loggingEnabled: true,
+    },
+    polygon: {
+      url: `https://polygon-mainnet.infura.io/v3/${process.env.POLYGON_INFURA_KEY}`,
+      chainId: 137,
       accounts: process.env.USWAP_TEST_PRIVATE_KEY
         ? [process.env.USWAP_TEST_PRIVATE_KEY]
         : undefined,

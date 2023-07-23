@@ -5,10 +5,6 @@
   "scripts": {
     "run-env": "npm i && tail -f /dev/null",
     "hardhat": "hardhat",
-    "hardhat:mumbai": "hardhat --network mumbai",
-    "hardhat:chiado": "hardhat --network chiado",
-    "hardhat:mantleTestnet": "hardhat --network mantleTestnet",
-    "hardhat:lineaTestnet": "hardhat --network lineaTestnet",
     "compile": "SKIP_LOAD=true hardhat compile"
   },
   "devDependencies": {
