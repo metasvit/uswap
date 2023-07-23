@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             </input>
             <select name="token_from">
               {tokensList.length && tokensList.map(item => (
-                <option value={item.symbol || " "}>item.symbol</option>
+                <option key={item.symbol} value={item.symbol || " "}>item.symbol</option>
               ))}
             </select>
           </div>
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
             </input>
             <select name="token_from">
               {tokensList.length && tokensList.map(item => (
-                <option value={item.symbol || " "}>item.symbol</option>
+                <option key={item.symbol} value={item.symbol || " "}>item.symbol</option>
               ))}
             </select>
           </div>
