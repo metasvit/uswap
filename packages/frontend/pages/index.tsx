@@ -219,8 +219,8 @@ const Home: NextPage = () => {
             <div>
               {(valueFrom && valueTo) && valueFrom} {fromToken && fromToken} {(valueFrom && valueTo) ? "=" : "->"} {(valueFrom && valueTo) && valueTo} {toToken && toToken}
             </div>
-            {quotes?.length && quotes[1]?.status === "FAILED" && <div> FAILED </div>}
-            {quotes?.length && quotes[1]?.status === "SUCCESS" && (valueFrom && valueTo) && <div>{` GAS: ${quotes[1]?.data.gas}`}</div>}
+            {quotes?.length && quotes[1]?.status === "FAILED" ? <div> FAILED </div> : null}
+            {quotes?.length && quotes[1]?.status === "SUCCESS" && (valueFrom && valueTo) ? <div>{` GAS: ${quotes[1]?.data.gas}`}</div> : null}
             
           </div>
           <div className={styles.button_section}>
