@@ -76,11 +76,21 @@ const Home: NextPage = () => {
       }
     }
   };
-  const getQuotes = async (amount: number | undefined) => {
+  const getQuotes = async (amount: number | undefined, transactionSide: string) => {
     if (fromToken && toToken && amount) {
-      const quotes = await fetchQuotes(fromToken, toToken, amount);
+      const quotes = await fetchQuotes(
+        fromToken,
+        toToken,
+        Math.round(amount) < 1 ? 1 : Math.round(amount)
+      );
       if (quotes) {
-        console.log("quotes", quotes);
+        setQuotes(quotes)
+        console.log("quotes", quotes[1]);
+        if (transactionSide === "from") {
+          setValueTo(quotes[1].status === "SUCCESS" ? Math.round(quotes[1].data.toAmount) : null)
+        } else {
+          setValueFrom(quotes[1].status === "SUCCESS" ? Math.round((amount / (quotes[1].data.toAmount / amount))) : null)
+        }
       }
     }
   };
@@ -142,7 +152,7 @@ const Home: NextPage = () => {
                 }
               }}
               onBlur={() => {
-                getQuotes(valueFrom || undefined);
+                getQuotes(valueFrom || undefined, "from");
               }}
             ></input>
             <div style={{ flexGrow: 1 }}></div>
@@ -151,6 +161,8 @@ const Home: NextPage = () => {
                 const value = event.target.value;
                 if (value === toToken) setToToken(fromToken);
                 setFromToken(value);
+                setValueFrom(null)
+                setValueTo(null)
               }}
             >
               {tokensList?.length &&
@@ -164,6 +176,7 @@ const Home: NextPage = () => {
                   </option>
                 ))}
             </select>
+            {/* <p></p> */}
           </div>
           <div className={styles.turn_over_section}>
             <button></button>
@@ -178,13 +191,15 @@ const Home: NextPage = () => {
                 }
               }}
               onBlur={() => {
-                getQuotes(valueTo || undefined);
+                getQuotes(valueTo || undefined, "to");
               }}
             ></input>
             <div style={{ flexGrow: 1 }}></div>
             <select
               onChange={(event) => {
                 setToToken(event.target.value);
+                setValueFrom(null)
+                setValueTo(null)
               }}
             >
               {tokensList.length &&
@@ -201,7 +216,10 @@ const Home: NextPage = () => {
                   ))}
             </select>
           </div>
-          <div className={styles.details_section}></div>
+          <div className={styles.details_section}>
+            {(valueFrom && valueTo) && valueFrom} {fromToken && fromToken} {(valueFrom && valueTo) ? "=" : "->"} {(valueFrom && valueTo) && valueTo} {toToken && toToken}
+            &nbsp;&nbsp;&nbsp;&nbsp;{quotes?.length && quotes[1]?.status === "FAILED" && "FAILED"}
+          </div>
           <div className={styles.button_section}>
             {!isConnect ? (
               <ConnectButton />
