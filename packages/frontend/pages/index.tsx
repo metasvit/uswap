@@ -52,8 +52,9 @@ const Home: NextPage = () => {
   const [toToken, setToToken] = useState<string>();
   const [valueFrom, setValueFrom] = useState<number | null>(null);
   const [valueTo, setValueTo] = useState<number | null>(null);
-  const [isIdentified, setIsIdentified] = useState(false);
+  const [isIdentifiedBinance, setIsIdentifiedBinance] = useState(false);
   const [quotes, setQuotes] = useState([]);
+  const [selectProvider, setSelectProvider] = useState('Binance');
 
   const getTokens = async () => {
     const tokens = await fetchTokens();
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
       setTokensList(tokens);
     }
   };
-  const getIdentified = async () => {
+  const getIdentifiedBinance = async () => {
     const result = await fetchIdentities(address);
     if (result) {
       if (
@@ -71,7 +72,7 @@ const Home: NextPage = () => {
           (provider: Provider) => provider.symbol === "BABT"
         )?.result
       ) {
-        setIsIdentified(true);
+        setIsIdentifiedBinance(true);
       }
     }
   };
@@ -92,7 +93,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setIsConnect(isConnected);
     if (isConnected && address) {
-      getIdentified();
+      getIdentifiedBinance();
     }
   }, [isConnected]);
 
@@ -117,6 +118,19 @@ const Home: NextPage = () => {
         <div className={styles.dialog}>
           <div className={styles.head_section}>
             <h1>Swap</h1>
+          </div>
+          <div className={styles.providers_section}>
+            <button
+              disabled={!isIdentifiedBinance}
+              className={(selectProvider === "Binance") ? styles.providers_section__active : styles.providers_section__inactive}
+              onClick={() => { setSelectProvider("Binance") }}>
+              Binance
+            </button>
+            <button
+              className={(selectProvider === "1Inch") ? styles.providers_section__active : styles.providers_section__inactive}
+              onClick={() => { setSelectProvider("1Inch") }}>
+              1Inch
+            </button>
           </div>
           <div className={styles.from_section}>
             <input
