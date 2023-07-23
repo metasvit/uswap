@@ -61,6 +61,14 @@ const config: HardhatUserConfig = {
         : undefined,
       loggingEnabled: true,
     },
+    polygonZkEVMTestnet: {
+      url: `https://rpc.public.zkevm-test.net`,
+      chainId: 1442,
+      accounts: process.env.USWAP_TEST_PRIVATE_KEY
+        ? [process.env.USWAP_TEST_PRIVATE_KEY]
+        : undefined,
+      loggingEnabled: true,
+    },
     mantleTestnet: {
       url: `https://rpc.testnet.mantle.xyz`,
       chainId: 5001,
