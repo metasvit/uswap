@@ -99,13 +99,13 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>USWAP</title>
+        <title>ChadSwap</title>
         <meta content="Swap from Metasvit" name="description" />
         <link href="/favicon.ico" rel="icon" />
       </Head>
       <header>
         <div style={{ display: "flex" }}>
-          <h2>USWAP</h2>
+          <h2>ChadSwap</h2>
           <div style={{ flexGrow: 1 }}></div>
           <div style={{ paddingTop: 20 }}>
             <ConnectButton />
@@ -119,7 +119,6 @@ const Home: NextPage = () => {
             <h1>Swap</h1>
           </div>
           <div className={styles.from_section}>
-            {/* <h2>You pay</h2> */}
             <input
               placeholder="0.00"
               value={valueFrom || ""}
@@ -156,7 +155,6 @@ const Home: NextPage = () => {
             <button></button>
           </div>
           <div className={styles.to_section}>
-            {/* <h2>You receive</h2> */}
             <input
               placeholder="0.00"
               value={valueTo || ""}
