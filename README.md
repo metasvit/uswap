@@ -10,12 +10,21 @@
 
 ### Deployed Contracts
 
-| Network       | Address                                                                                                                             |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Mumbai        | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://mumbai.polygonscan.com/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091)     |
-| MantleTestnet | [0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091](https://explorer.mantle.xyz/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091)        |
-| LineaTestnet  | [0x0](https://rinkeby.etherscan.io/address/0x0)                                                                                     |
-| Chiado        | [0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091](https://blockscout.chiadochain.net/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091) |
+#### Mainnets
+
+| Network | Address                                                                                                                  |
+| ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Linea   | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://lineascan.build/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091) |
+| Polygon | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://polygonscan.com/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091) |
+
+#### Testnets
+
+| Network               | Address                                                                                                                                |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Mumbai                | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://mumbai.polygonscan.com/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091)        |
+| Polygon zkEVM Testnet | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://testnet-zkevm.polygonscan.com/address/0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091) |
+| MantleTestnet         | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://explorer.testnet.mantle.xyz/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091)   |
+| Chiado                | [0x6d7a8e9dafa9606f21d5f8fa8a1a2a31e7687091](https://blockscout.chiadochain.net/address/0x6d7a8e9DAfa9606F21d5f8FA8a1a2A31e7687091)    |
 
 ## /backend
 

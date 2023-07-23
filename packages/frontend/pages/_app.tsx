@@ -13,7 +13,7 @@ import {
 } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+const { chains, publicClient } = configureChains(
   [mainnet, polygon, mantle, mantleTestnet, gnosisChiado, polygonMumbai],
   [publicProvider()]
 );
@@ -28,7 +28,6 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
-  webSocketPublicClient,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
