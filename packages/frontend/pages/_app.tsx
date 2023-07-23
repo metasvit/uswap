@@ -19,8 +19,8 @@ const { chains, publicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
-  projectId: "YOUR_PROJECT_ID",
+  appName: "USWAP App",
+  projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || "",
   chains,
 });
 
