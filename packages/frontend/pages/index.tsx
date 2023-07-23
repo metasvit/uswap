@@ -104,7 +104,7 @@ const Home: NextPage = () => {
     if (isConnected && address) {
       getIdentifiedBinance();
     }
-  }, [isConnected]);
+  }, [isConnected, address]);
 
   return (
     <div className={styles.container}>

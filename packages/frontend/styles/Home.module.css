@@ -99,6 +99,7 @@
   width: calc(50% - 4px);
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 }
 .providers_section button:disabled {
   color: rgba(256, 256, 256, 0.2);
@@ -139,6 +140,7 @@
   padding: 0 8px;
   background-color: rgba(256, 256, 256, 0.1);
   outline: none;
+  cursor: pointer;
 }
 .from_section p {
   position: absolute;
@@ -151,7 +153,7 @@
   width: 20px;
   height: 20px;
   left: calc(50% - 11px);
-  top: calc(50% - 13px);
+  top: calc(140px);
 }
 
 .turn_over_section button {
@@ -163,7 +165,7 @@
 }
 .to_section {
   display: flex;
-  margin-top: 5px;
+  margin-top: 8px;
   padding: 8px 8px 24px 8px;
   border: none;
   border-radius: 12px;
@@ -185,6 +187,7 @@
   padding: 0 8px;
   background-color: rgba(256, 256, 256, 0.1);
   outline: none;
+  cursor: pointer;
 }
 .details_section {
   display: flex;
@@ -200,9 +203,12 @@
   font-size: 12px;
 }
 .button_section {
-/* display: flex; */
-/* justify-content: center; */
+  display: flex;
+  justify-content: center;
   margin-top: 8px;
+}
+.button_section div {
+  width: 100%;
 }
 .button_section__button {
 width: 100%;
@@ -210,6 +216,7 @@ height: 32px;
 border: none;
 border-radius: 8px;
 background-color: white;
+cursor: pointer;
 }
 
 
