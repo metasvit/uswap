@@ -99,10 +99,19 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Swap App</title>
+        <title>USWAP</title>
         <meta content="Swap from Metasvit" name="description" />
         <link href="/favicon.ico" rel="icon" />
       </Head>
+      <header>
+        <div style={{ display: "flex" }}>
+          <h2>USWAP</h2>
+          <div style={{ flexGrow: 1 }}></div>
+          <div style={{ paddingTop: 20 }}>
+            <ConnectButton />
+          </div>
+        </div>
+      </header>
 
       <main className={styles.main}>
         <div className={styles.dialog}>
@@ -121,6 +130,7 @@ const Home: NextPage = () => {
                 }
               }}
             ></input>
+            <div style={{ flexGrow: 1 }}></div>
             <select
               onChange={(event) => {
                 const value = event.target.value;
@@ -155,6 +165,7 @@ const Home: NextPage = () => {
                 }
               }}
             ></input>
+            <div style={{ flexGrow: 1 }}></div>
             <select
               onChange={(event) => {
                 setToToken(event.target.value);
