@@ -85,7 +85,6 @@ const Home: NextPage = () => {
       );
       if (quotes) {
         setQuotes(quotes)
-        console.log("quotes", quotes[1]);
         if (transactionSide === "from") {
           setValueTo(quotes[1].status === "SUCCESS" ? Math.round(quotes[1].data.toAmount) : null)
         } else {
@@ -217,8 +216,12 @@ const Home: NextPage = () => {
             </select>
           </div>
           <div className={styles.details_section}>
-            {(valueFrom && valueTo) && valueFrom} {fromToken && fromToken} {(valueFrom && valueTo) ? "=" : "->"} {(valueFrom && valueTo) && valueTo} {toToken && toToken}
-            &nbsp;&nbsp;&nbsp;&nbsp;{quotes?.length && quotes[1]?.status === "FAILED" && "FAILED"}
+            <div>
+              {(valueFrom && valueTo) && valueFrom} {fromToken && fromToken} {(valueFrom && valueTo) ? "=" : "->"} {(valueFrom && valueTo) && valueTo} {toToken && toToken}
+            </div>
+            {quotes?.length && quotes[1]?.status === "FAILED" && <div> FAILED </div>}
+            {quotes?.length && quotes[1]?.status === "SUCCESS" && (valueFrom && valueTo) && <div>{` GAS: ${quotes[1]?.data.gas}`}</div>}
+            
           </div>
           <div className={styles.button_section}>
             {!isConnect ? (
