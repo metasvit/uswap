@@ -118,7 +118,6 @@
 .from_section {
   position: relative;
   display: flex;
-  margin-top: 8px;
   padding: 8px 8px 24px 8px;
   border: none;
   border-radius: 12px;
@@ -153,7 +152,7 @@
   width: 20px;
   height: 20px;
   left: calc(50% - 11px);
-  top: calc(140px);
+  top: calc(103px);
 }
 
 .turn_over_section button {
@@ -211,14 +210,50 @@
   width: 100%;
 }
 .button_section__button {
-width: 100%;
-height: 32px;
-border: none;
-border-radius: 8px;
-background-color: white;
-cursor: pointer;
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0d76fc;
+  color: white;
+  cursor: pointer;
 }
 
+.route,
+.routeActive,
+.routeDisabled,
+.verifyInfo {
+  width: 100%;
+  height: 40px;
+  margin-top: 4px;
+  padding: 4px;
+  border: 1px solid rgba(256, 256, 256, 0.1);
+  border-radius: 8px;
+  color: rgba(256, 256, 256, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.routeDisabled {
+  opacity: 0.3;
+}
+
+.routeActive {
+  border-color: #0d76fc;
+  background-color: rgba(13, 110, 253, 0.16);
+}
+
+.verifyInfo {
+  color: white;
+}
+
+.verifyBtn {
+  background-color: #0d76fc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 4px;
+}
 
 .card {
   margin: 1rem;

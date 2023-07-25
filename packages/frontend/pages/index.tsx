@@ -54,7 +54,6 @@ const Home: NextPage = () => {
   const [valueTo, setValueTo] = useState<number | null>(null);
   const [isIdentifiedBinance, setIsIdentifiedBinance] = useState(false);
   const [quotes, setQuotes] = useState([]);
-  const [selectProvider, setSelectProvider] = useState('Binance');
 
   const getTokens = async () => {
     const tokens = await fetchTokens();
@@ -76,7 +75,10 @@ const Home: NextPage = () => {
       }
     }
   };
-  const getQuotes = async (amount: number | undefined, transactionSide: string) => {
+  const getQuotes = async (
+    amount: number | undefined,
+    transactionSide: string
+  ) => {
     if (fromToken && toToken && amount) {
       const quotes = await fetchQuotes(
         fromToken,
@@ -86,9 +88,17 @@ const Home: NextPage = () => {
       if (quotes) {
         setQuotes(quotes)
         if (transactionSide === "from") {
-          setValueTo(quotes[1].status === "SUCCESS" ? Math.round(quotes[1].data.toAmount) : null)
+          setValueTo(
+            quotes[1].status === "SUCCESS"
+              ? Math.round(quotes[1].data.toAmount)
+              : null
+          );
         } else {
-          setValueFrom(quotes[1].status === "SUCCESS" ? Math.round((amount / (quotes[1].data.toAmount / amount))) : null)
+          setValueFrom(
+            quotes[1].status === "SUCCESS"
+              ? Math.round(amount / (quotes[1].data.toAmount / amount))
+              : null
+          );
         }
       }
     }
@@ -128,19 +138,6 @@ const Home: NextPage = () => {
           <div className={styles.head_section}>
             <h1>Swap</h1>
           </div>
-          <div className={styles.providers_section}>
-            <button
-              disabled={!isIdentifiedBinance}
-              className={(selectProvider === "Binance") ? styles.providers_section__active : styles.providers_section__inactive}
-              onClick={() => { setSelectProvider("Binance") }}>
-              Binance
-            </button>
-            <button
-              className={(selectProvider === "1Inch") ? styles.providers_section__active : styles.providers_section__inactive}
-              onClick={() => { setSelectProvider("1Inch") }}>
-              1Inch
-            </button>
-          </div>
           <div className={styles.from_section}>
             <input
               placeholder="0.00"
@@ -160,8 +157,8 @@ const Home: NextPage = () => {
                 const value = event.target.value;
                 if (value === toToken) setToToken(fromToken);
                 setFromToken(value);
-                setValueFrom(null)
-                setValueTo(null)
+                setValueFrom(null);
+                setValueTo(null);
               }}
             >
               {tokensList?.length &&
@@ -197,8 +194,8 @@ const Home: NextPage = () => {
             <select
               onChange={(event) => {
                 setToToken(event.target.value);
-                setValueFrom(null)
-                setValueTo(null)
+                setValueFrom(null);
+                setValueTo(null);
               }}
             >
               {tokensList.length &&
@@ -225,7 +222,7 @@ const Home: NextPage = () => {
           </div>
           <div className={styles.button_section}>
             {!isConnect ? (
-              <ConnectButton />
+              <div className={styles.details_section}></div>
             ) : (
               <div>
                 <button
@@ -240,6 +237,42 @@ const Home: NextPage = () => {
             )}
           </div>
         </div>
+
+        {quotes.length ? (
+          <div className={styles.dialog}>
+            <div className={styles.head_section}>
+              <h1>Routing</h1>
+            </div>
+            <div className={styles.verifyInfo}>
+              <div> Verify your wallet to access CEX routing</div>
+              <div style={{ flexGrow: 1 }}></div>
+              <div>
+                <button className={styles.verifyBtn}>Verify</button>
+              </div>
+            </div>
+            {quotes.map((quote, index) => {
+              if (quote.name === "Binance") {
+                return (
+                  <div className={styles.routeDisabled} key={index}>
+                    <div>{quote.name}</div>
+                    <div style={{ flexGrow: 1 }}></div>
+                    <div>{quote.data.toAmount}</div>
+                  </div>
+                );
+              } else {
+                return (
+                  <div className={styles.routeActive} key={index}>
+                    <div>{quote.name}</div>
+                    <div style={{ flexGrow: 1 }}></div>
+                    <div>{quote.data.toAmount}</div>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        ) : (
+          <></>
+        )}
       </main>
 
       <footer className={styles.footer}>
